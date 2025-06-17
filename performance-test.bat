@@ -2,16 +2,21 @@
 
 set GRADLE_DIR=%CD%\gradle_user_home
 
-REM Create test directory if it doesn't exist
 if not exist "%GRADLE_DIR%" mkdir "%GRADLE_DIR%"
 
 set GRADLE_USER_HOME=%GRADLE_DIR%
 
+echo.
 echo === DEPENDENCY SETUP ===
-gradlew.bat build --refresh-dependencies -q --continue -x spring-webmvc:test -x :spring-webflux:test -x checkstyleNohttp
+echo.
+REM One-time full build to download dependencies
+gradlew.bat build --refresh-dependencies -q --continue -x :spring-webflux:test -x :spring-webmvc:test -x checkstyleNohttp
 gradlew.bat clean -q
 
+echo.
 echo === PERFORMANCE TESTING ===
 echo Start time: %time%
-gradlew.bat clean build -x spring-webmvc:test -x :spring-webflux:test -x checkstyleNohttp --rerun-tasks --offline --parallel
+echo.
+gradlew.bat clean build -x :spring-webflux:test -x :spring-webmvc:test -x checkstyleNohttp --rerun-tasks --offline --parallel
+echo.
 echo End time: %time%
