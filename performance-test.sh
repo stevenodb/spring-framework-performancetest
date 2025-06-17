@@ -2,7 +2,6 @@
 
 GRADLE_DIR="${PWD}/gradle_user_home"
 
-# Create test directory if it doesn't exist
 mkdir -p "$GRADLE_DIR"
 
 export GRADLE_USER_HOME=$GRADLE_DIR
