@@ -13,3 +13,5 @@ echo "=== DEPENDENCY SETUP ==="
 
 echo "=== PERFORMANCE TESTING ==="
 time ./gradlew clean build -x spring-webmvc:test -x :spring-webflux:test -x checkstyleNohttp --rerun-tasks --offline --parallel
+
+./gradlew --stop

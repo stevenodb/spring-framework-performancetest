@@ -14,3 +14,5 @@ CALL gradlew.bat clean
 
 echo === PERFORMANCE TESTING ===
 CALL powershell -Command "Measure-Command { .\gradlew.bat clean build -x :spring-webflux:test -x :spring-webmvc:test -x checkstyleNohttp --rerun-tasks --offline --parallel } | Select-Object TotalMinutes"
+
+CALL gradlew.bat --stop
